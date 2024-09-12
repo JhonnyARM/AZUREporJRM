@@ -1,0 +1,36 @@
+﻿@model List<Informe_Azure_Rivera.Models.ClsPersona>
+
+<h2>Listado de Personas</h2>
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Edad</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Count > 0)
+        {
+            foreach (var persona in Model)
+            {
+                <tr>
+                    <td>@persona.name</td>
+                    <td>@persona.lastname</td>
+                    <td>
+                        <!-- Aquí podrías agregar botones para editar o eliminar cada persona -->
+                        <a href="@Url.Action("EditarPersona", "Persona", new { id = "#" })">Editar</a> |
+                        <a href="@Url.Action("EliminarPersona", "Persona", new { id = "#" })">Eliminar</a>
+                    </td>
+                </tr>
+                            }
+        }
+        else
+                        {
+            <tr>
+                <td colspan="3">No hay personas registradas</td>
+            </tr>
+        }
+    </tbody>
+</table>
